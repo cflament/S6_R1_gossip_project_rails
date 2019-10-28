@@ -1,0 +1,17 @@
+<div class="text-center">
+    <h1>Index</h1>
+    <p>Mon site référence les potins, voilà la liste actuelle (il y a <%= @gossips_count %> potins) :</p>
+    <div class="row">
+    <% @gossips_array.each_with_index do |gossip, i| %>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%= @title_array[i] %></h5>
+                    <p class="card-text">auteur : <%= @author_array[i] %></p>
+                    <%= link_to "Details", gossip_path(i) %> </p><br/>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>

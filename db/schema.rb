@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_24_232331) do
+ActiveRecord::Schema.define(version: 2019_10_30_102608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2019_10_24_232331) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_gossips_on_user_id"
+  end
+
+  create_table "inboxes", force: :cascade do |t|
+    t.bigint "recipient_id"
+    t.bigint "recieved_message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recieved_message_id"], name: "index_inboxes_on_recieved_message_id"
+    t.index ["recipient_id"], name: "index_inboxes_on_recipient_id"
   end
 
   create_table "private_messages", force: :cascade do |t|

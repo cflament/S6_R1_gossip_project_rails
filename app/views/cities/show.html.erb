@@ -1,14 +1,6 @@
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="diplay-3"> Bienvenue sur mon site de Potins</h1>
-        <h3 class="diplay-5"> Prêt à Bitcher ?</h3>
-    </div>
-</div>
-
 <div class="container">
-    <div ><h1>Index</h1>
-        <p>Mon site référence les potins, voilà la liste actuelle (il y a <%= @gossips_count %> potins) :</p>
-    </div> 
+    <h1 class="display-3"><%= @city.name %></h1>
+    <h3 class="diplay-5">Découvre les potins locaux : </h3>
     <div class="list-group">
         <% @gossips.each do |gossip| %>
             <a href= <%= gossip_path(gossip.id) %> class="list-group-item list-group-item-action">
@@ -22,5 +14,3 @@
         <% end %>
     </div>    
 </div>
-
-

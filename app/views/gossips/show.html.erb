@@ -1,5 +1,7 @@
-<div class="text-center">
-    <p> <%= @title %> : </p>
-    <H1> <%= @content %> </h1>
-    <p> créé par <%= link_to @author, user_path(@user_id) %> le <%= @created_at%>
+<div class="container">
+    <div class="text-center">
+        <p> <%= @gossip.title %> : </p>
+        <H1> <%= @gossip.content %> </h1>
+        <p> créé par <%= link_to @gossip.user.first_name, user_path(@gossip.user.id), class:"text-info" %> de <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id), class:"text-info" %>
+    </div>
 </div>

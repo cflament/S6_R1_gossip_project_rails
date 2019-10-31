@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pour accéder au site : 
+bunde install
+rails db:create
+rails db:migrate
+rails db:seed
 
-Things you may want to cover:
+Ensuite tu n'as plus qu'à lancer un bon vieux rails s et mon site sera dispo au http://localhost:3000/
 
-* Ruby version
+Normalement tu peux : 
+- Sans créer une session : 
+    - Consulter la liste des potins, 
+    - consulter les pages potins
 
-* System dependencies
+- Dans une session utilisateur
+    - commenter les potins
+    - créer de nouveaux potins
+    - editer ou supprimer les potins que tu as créés
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Pour l'instant tu ne peux pas...
+- mettre des tags
+- editer un user
+- editer ou supprimer des commentaires
+- mettre des likes

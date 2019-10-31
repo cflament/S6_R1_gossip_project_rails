@@ -4,11 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(email: params[:email], password: params[:password])
+    @user = User.new(email: params[:email], password: params[:password], city_id: rand(1..10))
 
     if @user.save
       puts "User #{@user} saved"
-      flash[:success] = "Session créée, bienvenue dans la communauté des potins !"
+      flash[:success] = "Session créée, bienvenu.e dans la communauté des potins !"
+      #création d'une session
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       puts @user

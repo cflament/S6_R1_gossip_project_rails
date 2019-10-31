@@ -1,9 +1,11 @@
 <div class="container">
     <div class="text-center">
         <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-        <p>Age : <%= @user.age%><br/>
-        Email : <%= @user.email%><br/>
-        Ville : <%= link_to @user.city.name, city_path(@user.city.id), class:"text-info" %><br/>
+        <p>Email : <%= @user.email%><br/>
+        Age : <%= @user.age%><br/>
+        Ville : <% if @user.city != nil %>
+                    de <%= link_to @user.city.name, city_path(@user.city.id), class:"text-info" %><br/>
+                <% end %></p>
         Présentation : <%= @user.description%></p>
     </div>
 </div>

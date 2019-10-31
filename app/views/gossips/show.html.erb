@@ -1,7 +1,49 @@
+<br/><br/>
 <div class="container">
-    <div class="text-center">
-        <p> <%= @gossip.title %> : </p>
-        <H1> <%= @gossip.content %> </h1>
-        <p> créé par <%= link_to @gossip.user.first_name, user_path(@gossip.user.id), class:"text-info" %> de <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id), class:"text-info" %>
+    <div class="row"> <h5>Potin : </h5> </div>
+    <div class="row">
+        <div class="card border-secondary col">
+            <div class="card-header bg-transparent border-secondary"> <%= @gossip.title %> </div>
+            <div class="card-body text-secondary">
+                <p class="card-text"><%= @gossip.content %></p>
+            </div>
+            <div class="card-footer bg-transparent border-secondary">
+                créé par <%= link_to @gossip.user.first_name, user_path(@gossip.user.id), class:"text-info" %> 
+                <% if @gossip.user.city != nil %>
+                    de <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id), class:"text-info" %>
+                <% end %></p>    
+            </div>
+        </div>
     </div>
+    <br/>
+    <div class="row">
+        <%= link_to "Modifier", edit_gossip_path(@gossip.id), class: "btn btn-light"%> 
+        <%= link_to "Supprimer", gossip_path(@gossip.id), data: {method: :delete, confirm: "Es-tu sûr.e de vouloir supprimer ce potin ?"}, class: "btn btn-danger"%> 
+    </div><br/>
+    <div class="row">
+        <ul class="list-group list-group-flush col-10 d-flex justify-content-right">
+        <h5>Commentaires : </h5>
+            <% @gossip.comments.all.each do |comment| %>
+            <li class="list-group-item"> 
+                <%= comment.content %> <br/> 
+                <small> <%= comment.user.email %> <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %> </small>
+            </li>
+            <% end %>
+            <li class="list-group-item">
+                <%= form_for [ @gossip, @comment ] do |f| %>
+                    <div class="form-group">
+                        <%= f.text_area :content, class: 'form-control'%>
+                    </div>
+                    <%= f.submit "Envoyer", class: "btn btn-info" %>
+                <% end %>
+
+            </li>
+
+        </ul>
+    </div>
+
 </div>
+
+
+
+        

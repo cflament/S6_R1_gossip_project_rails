@@ -7,17 +7,20 @@
 
 <div class="container">
     <div ><h1>Index</h1>
-        <p>Mon site référence les potins, voilà la liste actuelle (il y a <%= @gossips_count %> potins) :</p>
+        <p>Mon site référence les potins, voilà la liste actuelle, du plus récent au plus ancien :</p>
     </div> 
     <div class="list-group">
-        <% @gossips.each do |gossip| %>
+        <% @gossips.sort {|a,b| b.created_at <=> a.created_at }.each do |gossip| %>
             <a href= <%= gossip_path(gossip.id) %> class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1"><%= gossip.title%></h5>
-                    <small><%= gossip.created_at.in_time_zone('GMT') %></small>
+                    <small><%= gossip.created_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
                 </div>
                 <p class="mb-1"><%= gossip.content %></p>
-                <small><%= gossip.user.first_name %></small>
+                <div class="d-flex w-100 justify-content-between">
+                    <small><%= gossip.user.first_name %></small>
+                    <span class="badge badge-primary badge-pill"> <%= gossip.comments.size %> </span>
+                </div>
             </a> 
         <% end %>
     </div>    

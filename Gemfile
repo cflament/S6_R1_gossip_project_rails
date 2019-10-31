@@ -67,3 +67,5 @@ gem "faker", "~> 2.6"
 gem "table_print", "~> 1.5"
 
 
+
+gem "rails-i18n", "~> 5.1"

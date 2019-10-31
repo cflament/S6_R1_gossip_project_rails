@@ -2,7 +2,7 @@
   <body>
     <% if @gossip.errors.any? %>
     <div class="alert alert-danger" role="alert">
-      <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+      <p>Nous n'avons pas réussi à modifier le potin pour la (ou les) raison(s) suivante(s) :</p>
       <ul>
         <% @gossip.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -12,16 +12,16 @@
     <% end %>
     
     <div class="container">
-        <h1>Balance un nouveau doss !</h1>
+        <h1>Modifie ton potin :</h1>
 
-        <%= form_tag gossips_path, method: "post" do %>
+        <%= form_tag url_for(action: 'update'), method: "PATCH" do %>
         <div class="form-group">
-          <%= text_field_tag 'gossip_title', @gossip.title, class: 'form-control', placeholder: 'titre' %>
-          <br/>
+          <%= text_field_tag 'title', @gossip.title, class: 'form-control' %>
+          <br />
         </div>
         <div class="form-group">
-          <%= text_area_tag 'gossip_text', @gossip.content, class: 'form-control', placeholder: 'potin...' %>
-          <br/>
+          <%= text_area_tag 'content', @gossip.content, class: 'form-control' %>
+          <br />
         </div>
           <%= submit_tag "Valider", class: "btn btn-info" %>
         <% end %>

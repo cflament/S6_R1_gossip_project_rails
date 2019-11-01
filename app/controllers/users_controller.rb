@@ -7,10 +7,11 @@ class UsersController < ApplicationController
     @user = User.new(email: params[:email], password: params[:password], city_id: rand(1..10))
 
     if @user.save
-      puts "User #{@user} saved"
       flash[:success] = "Session créée, bienvenu.e dans la communauté des potins !"
       #création d'une session
-      session[:user_id] = @user.id
+      log_in(user)
+      #création d'un cookie
+      remember(user)
       redirect_to root_path
     else
       puts @user

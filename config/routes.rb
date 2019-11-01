@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
-  get 'comments/new'
-  get 'comments/create'
-  get 'comments/show'
-  get 'comments/edit'
-  get 'comments/update'
-  get 'comments/destroy'
-  get '/team', to: 'pages#Team'
-  get '/contact', to: 'pages#Contact'
-  get '/welcome/:first_name', to: 'pages#welcome'
-
-  
-  
+  resources :teams, only: [:index]
+  resources :contacts, only: [:index]
   resources :users
   resources :cities
   resources :sessions, only: [:new, :create, :destroy]
